@@ -6,6 +6,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,10 @@ import java.util.Map;
 @Service
 public class JwtService {
 
-    String Secret_Key = "E6FFA5B73286CDCB2A7EF9CC7F55FNRINVU495564JHFY67674";
+//    String Secret_Key = "E6FFA5B73286CDCB2A7EF9CC7F55FNRINVU495564JHFY67674";
+
+    @Value("${jwt.secret.key}")
+    private String Secret_Key;
 
     public String generateToken(User user){
         Map<String, String > claims = new HashMap<>();
