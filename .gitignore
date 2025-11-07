@@ -28,12 +28,15 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
-**/uploads/
-uploads/
-E:/Self-Made Projects/E-Commerce/uploads/
+
 ### VS Code ###
 .vscode/
 
 # Environment variables
 src/main/resources/.env
 *.env
+
+# Upload directories (both relative and absolute)
+uploads/
+**/uploads/
+E:/Self-Made Projects/E-Commerce/uploads/
