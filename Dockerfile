@@ -1,19 +1,25 @@
-FROM maven:3.8.4-openjdk-17 AS build
+# Use OpenJDK 17
+FROM maven:3.8.4-openjdk-17
 
+# Set working directory
 WORKDIR /app
 
+# Copy the Maven wrapper and pom.xml first (for better caching)
+COPY mvnw .
+COPY .mvn .mvn
 COPY pom.xml .
-RUN mvn dependency:go-offline
 
-COPY src ./src
-RUN mvn clean package -DskipTests
+# Copy source code
+COPY src src
 
-FROM openjdk:17-jdk-slim
+# Make Maven wrapper executable
+RUN chmod +x mvnw
 
-WORKDIR /app
+# Build the application
+RUN ./mvnw clean package -DskipTests
 
-COPY --from=build /app/target/E-Commerce-0.0.1-SNAPSHOT.jar .
-
+# Expose port
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "/app/E-Commerce-0.0.1-SNAPSHOT.jar"]
+# Run the application
+CMD ["java", "-jar", "target/*.jar"]
