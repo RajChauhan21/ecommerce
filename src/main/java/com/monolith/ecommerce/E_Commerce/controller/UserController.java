@@ -5,6 +5,7 @@ import com.monolith.ecommerce.E_Commerce.DTO.LoginRequest;
 import com.monolith.ecommerce.E_Commerce.DTO.UserProductDto;
 import com.monolith.ecommerce.E_Commerce.DTO.UserProfileDto;
 import com.monolith.ecommerce.E_Commerce.entity.User;
+import com.monolith.ecommerce.E_Commerce.service.CloudinaryService;
 import com.monolith.ecommerce.E_Commerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private CloudinaryService cloudinaryService;
 
     @PostMapping("signUp")
     public ResponseEntity<?> signUp(@RequestBody User user){
@@ -48,6 +52,6 @@ public class UserController {
 
     @PostMapping("upload/image/{id}")
     public ResponseEntity<?> uploadImage(@PathVariable int id, @RequestParam("file")MultipartFile file) throws IOException {
-        return service.uploadUserProfileImage(id,file);
+        return cloudinaryService.uploadImage(id,file);
     }
 }
