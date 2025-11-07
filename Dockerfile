@@ -1,5 +1,5 @@
 # Use official OpenJDK 21 runtime
-FROM openjdk:21-jdk-slim AS build
+FROM maven:3.8.4-openjdk-17 AS build
 
 # Set working directory
 WORKDIR /app
