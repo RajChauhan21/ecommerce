@@ -36,7 +36,3 @@ build/
 src/main/resources/.env
 *.env
 
-# Upload directories (both relative and absolute)
-uploads/
-**/uploads/
-E:/Self-Made Projects/E-Commerce/uploads/
