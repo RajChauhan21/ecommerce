@@ -1,4 +1,4 @@
-# Use official OpenJDK 17 runtime
+# Use official OpenJDK 21 runtime
 FROM openjdk:21-jdk-slim AS build
 
 # Set working directory
