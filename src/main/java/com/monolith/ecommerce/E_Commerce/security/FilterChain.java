@@ -83,7 +83,8 @@ public class FilterChain {
     @Bean
     public CorsConfigurationSource configurationSource(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("http://localhost:5173");
+        corsConfiguration.addAllowedOriginPattern("https://ecommerce-app-cxr.netlify.app");
+        corsConfiguration.addAllowedOriginPattern("http://localhost:5173");
         corsConfiguration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
         corsConfiguration.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With", "Accept"));
         corsConfiguration.setExposedHeaders(List.of("Authorization"));
